@@ -1,0 +1,19 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=2502
+
+User Guide: 
+        http://www.scribd.com/doc/9662346/flyvim
+        Also included in the tar ball.
+
+Summary:
+
+fly.vim is a vim plugin that may enhance your vim experience (and productivity) with an integrated code development environment. The plugin facilitates rapid code-walkthrough (or flythrough as I call it), enables instant symbol searches and cross references in a large code base, manages stacks of multiple files, includes buffer and directory explorer and integrates code reviews and compilation, all within a simple and intuitive user interface.
+
+fly.vim integrates seamlessly with source code index databases (Cscope for now), web search engines (Google and Yahoo) and UNIX man pages. Most functions are mapped to shortcut keys, allowing you to fly through a large code base or web in a convenient manner. Using the shortcut mappings, you may search for symbols (or multi-word phrases) after visually highlighting them, or by typing them on vim command line or by taking the cursor to the symbol in a vim window.
+
+Although there are quite a few features to talk about as you will find in the User Guide, it is very easy to get started,
+
+	Download and place the fly.vim in your $HOME/.vim/plugin
+	Change directory (cd) to the root of the source tree (or subtree)
+	Launch vim. Start using the plugin.
+
+The plugin has been in use on Linux and FreeBSD with vim 6.x and 7.y.
