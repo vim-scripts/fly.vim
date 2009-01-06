@@ -2,8 +2,8 @@
 " Plugin:      fly.vim
 " Description: Facilitates code fly-through. (Details in the User Guide)
 " Version:     1.0
+" Author:      Pranay Pogde
 " Copyright:   Pranay Pogde [2005 Onwards]
-" Maintainers: Pranay Pogde, ... (volunteers are welcome)
 " License:     VIM license. [vimdoc.sourceforge.net/htmldoc/uganda.html#license]
 " Disclaimer:  The plugin comes with no warranty of any kind, either expressed 
 "              or implied. In no event will the copyright holder and maintainers 
@@ -639,7 +639,9 @@ function s:OnHit_db(...)
 	call s:ShowHideSubtree(l:node)
     else
 	let s:CscopeDB = {{s:curCmd}_tree{i}_node}_file
-        let s:CscopeDir = strpart(s:CscopeDB, 0, strridx(s:CscopeDB, "/"))
+        if s:CscopeDirSet == 0
+            let s:CscopeDir = strpart(s:CscopeDB, 0, strridx(s:CscopeDB, "/"))
+        endif
 	let l:db = strpart(s:CscopeDB, strlen(s:CscopeDir))
 	let l:db = substitute(l:db, "\\/", "__", "g")
 	let l:db = substitute(l:db, "\\.", "_", "g")
@@ -2352,8 +2354,9 @@ function s:SetAsFlyWin()
     syntax match GoogleSearch '^[0-9]\+\..*$' 
     syntax match Mappings '<Leader>.[^ ]* ' 
 
-    "TODO only for vim 7.0 +
-    "set cursorline
+    if v:version >= 700
+        set cursorline
+    endif
     highlight link File type
     highlight link ExploreHeading type
     highlight link Numeric keyword
@@ -2372,7 +2375,9 @@ function s:SetAsFlyWin()
     highlight MyHeading3 term=bold,reverse cterm=bold,reverse
     highlight MyHeading4 term=bold,reverse cterm=bold,reverse
     highlight Mappings term=bold cterm=bold
-    "highlight cursorline term=bold,underline cterm=bold,underline
+    if v:version >= 700
+        highlight cursorline term=bold,underline cterm=bold,underline
+    endif
 endfunction
 
 function s:InitFlyControlWin()
